@@ -5,12 +5,19 @@ const express = require("express");
 
 // express app
 const app = express();
+const balancesRoutes = require("./routes/balances")
+
+// middleware
+app.use(express.json())
+
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
+})
 
 
 // routes
-app.get('/', (req, res) => {
-    res.json({mssg: "Welcome to the app"})
-})
+app.use("/api/balances", balancesRoutes)
 
 
 // listen for requests
