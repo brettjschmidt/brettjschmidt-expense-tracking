@@ -1,31 +1,27 @@
 const express = require("express");
-
+const {
+    getAccounts,
+    getAccount,
+    createAccount,
+    deleteAccount,
+    updateAccount,
+} = require("../controllers/account-controller");
 
 const router = express.Router();
 
 // Get all accounts
-router.get("/", (req, res) => {
-    res.json({mssg: 'Get all accounts'})
-});
+router.get("/", getAccounts);
 
 // Get a single account
-router.get("/:id", (req, res) => {
-    res.json({mssg: 'Get single account'})
-});
+router.get("/:id", getAccount);
 
 // Post a new account
-router.post("/", (req, res) => {
-    res.json({mssg: 'Post a new account'})
-});
+router.post("/", createAccount);
 
 // Delete a account
-router.delete("/:id", (req, res) => {
-    res.json({mssg: 'Delete a account'})
-});
+router.delete("/:id", deleteAccount);
 
 // Update a account
-router.patch("/:id", (req, res) => {
-    res.json({mssg: 'Updata a account'})
-});
+router.patch("/:id", updateAccount);
 
 module.exports = router;

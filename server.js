@@ -6,6 +6,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const balancesRoutes = require("./routes/balances");
+const accountRoutes = require("./routes/accounts")
 
 // middleware
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use("/api/balances", balancesRoutes);
+app.use("/api/accounts", accountRoutes);
 
 // connect to mongo
 mongoose

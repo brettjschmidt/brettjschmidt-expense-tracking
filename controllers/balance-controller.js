@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // Get all balances
 const getBalances = async (req, res) => {
-    const balances = await Balance.find({}).sort({ title: 1, date: 1 });
+    const balances = await Balance.find({}).sort({ createdAt: -1 });
 
     res.status(200).json(balances);
 };
@@ -27,9 +27,25 @@ const getBalance = async (req, res) => {
 
 // Create a new balance
 const createBalance = async (req, res) => {
-    const { title, amount, date, category } = req.body;
+    const { title, amount, category } = req.body;
+    
+    let emptyFields = []
+
+    if(!title) {
+        emptyFields.push("title")
+    }
+    if(!amount) {
+        emptyFields.push("amount")
+    }
+    if(!category) {
+        emptyFields.push("category")
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: "Please fill in all the fields", emptyFields})
+    }
+
     try {
-        const balance = await Balance.create({ title, amount, date, category });
+        const balance = await Balance.create({ title, amount, category });
         res.status(200).json(balance);
     } catch (error) {
         res.status(400).json({ error: error.message });
