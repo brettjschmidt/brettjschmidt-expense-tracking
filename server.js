@@ -32,3 +32,7 @@ mongoose
     .catch((error) => {
         console.log(error);
     });
+
+    // API_BASE_URL for backend
+const API_BASE_URL = process.env.API_BASE_URL;
+console.log("Backend API Base URL:", API_BASE_URL);
