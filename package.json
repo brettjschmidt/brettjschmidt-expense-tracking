@@ -12,6 +12,7 @@
   "author": "brettschmidt <https://www.npmjs.com/~brettschmidt> (https://www.npmjs.com/~brettschmidt)",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "mongoose": "^7.3.0",
