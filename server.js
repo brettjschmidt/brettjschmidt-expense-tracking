@@ -10,7 +10,9 @@ const accountRoutes = require("./routes/accounts")
 
 // middleware
 app.use(express.json());
-app.use(cors()); // Allow all origins
+app.use(cors({
+    origin: "https://brettjschmidt-expense-tracking-c434ede5b20d.herokuapp.com/" // Allow requests from your frontend
+  }));
 
 app.use((req, res, next) => {
     console.log(req.path, req.method);
